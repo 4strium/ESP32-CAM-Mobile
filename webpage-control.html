@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>ESP32 - CAM - TEST</title>
+    <script>
+        function captureImage() {
+            // Pause the stream
+            document.getElementById('stream').src = '';
+
+            fetch('http://192.168.4.1/capture')
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Image captured successfully');
+                    } else {
+                        console.error('Error capturing image');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    // Resume the stream
+                    document.getElementById('stream').src = 'http://192.168.4.1/stream';
+                });
+        }
+    </script>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <img id="stream" src="http://192.168.4.1/stream" alt=""
+            style="width: 55%;  height: auto; margin-bottom: 20px;" />
+        <br>
+        <button style="font-size: 40px;" onclick=" captureImage()">Capture Image</button>
+    </div>
+</body>
+
+</html>
