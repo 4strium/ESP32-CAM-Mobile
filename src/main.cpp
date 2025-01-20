@@ -39,8 +39,13 @@ const char *password = "12345678";
 
 httpd_handle_t stream_httpd = NULL;
 
+// Initialize the camera
+camera_config_t config;
+
 // Variable to track LED state
 bool led_on = false;
+
+void startCameraServer();
 
 // Handler to toggle the LED state
 static esp_err_t led_handler(httpd_req_t *req)
@@ -87,8 +92,58 @@ static esp_err_t capture_handler(httpd_req_t *req)
   httpd_resp_send(req, response, strlen(response));
   return ESP_OK;
 }
+static esp_err_t quality_handler(httpd_req_t *req)
+{
+  char buf[100];
+  size_t buf_len = httpd_req_get_url_query_len(req) + 1;
+  if (buf_len > 1)
+  {
+    if (httpd_req_get_url_query_str(req, buf, buf_len) == ESP_OK)
+    {
+      char param[32];
+      if (httpd_query_key_value(buf, "val", param, sizeof(param)) == ESP_OK)
+      {
 
-// Stream handler (unchanged)
+        ESP_LOGI(TAG, "Found URL query parameter => val=%s", param);
+        if (strcmp(param, "SVGA") == 0)
+        {
+          config.frame_size = FRAMESIZE_SVGA;
+        }
+        else if (strcmp(param, "XGA") == 0)
+        {
+          config.frame_size = FRAMESIZE_XGA;
+        }
+        else if (strcmp(param, "SXGA") == 0)
+        {
+          config.frame_size = FRAMESIZE_SXGA;
+        }
+        else if (strcmp(param, "UXGA") == 0)
+        {
+          config.frame_size = FRAMESIZE_UXGA;
+        }
+        else
+        {
+          config.frame_size = FRAMESIZE_VGA;
+        }
+
+        esp_camera_deinit();
+
+        if (esp_camera_init(&config) != ESP_OK)
+        {
+
+          return ESP_FAIL;
+        }
+
+        startCameraServer();
+      }
+    }
+  }
+  // Réponse HTTP
+  httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
+  httpd_resp_send(req, "Quality set", HTTPD_RESP_USE_STRLEN);
+  return ESP_OK;
+}
+
 static esp_err_t stream_handler(httpd_req_t *req)
 {
   camera_fb_t *fb = NULL;
@@ -187,10 +242,16 @@ void startCameraServer()
       .method = HTTP_GET,
       .handler = led_handler,
       .user_ctx = NULL};
+  httpd_uri_t framesize_uri = {
+      .uri = "/quality",
+      .method = HTTP_GET,
+      .handler = quality_handler,
+      .user_ctx = NULL};
 
   if (httpd_start(&stream_httpd, &config) == ESP_OK)
   {
     httpd_register_uri_handler(stream_httpd, &stream_uri);
+    httpd_register_uri_handler(stream_httpd, &framesize_uri);
     if (PHOTO_MODE)
     {
       httpd_register_uri_handler(stream_httpd, &capture_uri);
@@ -209,8 +270,6 @@ void setup()
 
   pinMode(FLASHLED_GPIO_NUM, OUTPUT);
 
-  // Initialize the camera
-  camera_config_t config;
   config.ledc_channel = LEDC_CHANNEL_0;
   config.ledc_timer = LEDC_TIMER_0;
   config.pin_d0 = Y2_GPIO_NUM;

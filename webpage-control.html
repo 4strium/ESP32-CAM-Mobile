@@ -1,7 +1,8 @@
 <html>
 
 <head>
-    <title>ESP32 - CAM - TEST</title>
+    <title>CAM - Control Center</title>
+    <link rel="icon" type="image/x-icon" href="camera-icon.png">
     <script>
         function captureImage() {
             // Pause the stream
@@ -23,15 +24,50 @@
                     document.getElementById('stream').src = 'http://192.168.4.1/stream';
                 });
         }
+
+        function updateFramesize() {
+            const value = document.getElementById('frameSize').value;
+
+            // Pause the stream
+            document.getElementById('stream').src = '';
+
+            fetch(`http://192.168.4.1/quality?val=${value}`, {
+                mode: 'no-cors' // Add this line to disable CORS
+            })
+                .then(response => {
+                    console.log(`Framesize updated successfully`);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    // Resume the stream
+                    document.getElementById('stream').src = 'http://192.168.4.1/stream';
+                });
+
+        }
     </script>
 </head>
 
 <body>
     <div style="text-align: center;">
         <img id="stream" src="http://192.168.4.1/stream" alt=""
-            style="width: 55%;  height: auto; margin-bottom: 20px;" />
+            style="width: 55%; height: auto; margin-bottom: 20px;" />
         <br>
-        <button style="font-size: 40px;" onclick=" captureImage()">Capture Image</button>
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 55%; margin: 0 auto;">
+            <button style="font-size: 40px;" onclick="captureImage()">Capture Image</button>
+            <div style="display: flex; align-items: center;">
+                <label style="font-size: 40px; font-family: Arial; margin-bottom: 4px;" for="frameSize">Select
+                    Frame Size :</label>
+                <select id="frameSize" onchange="updateFramesize()" style="height: 45px; margin-left: 15px;">
+                    <option value="VGA">VGA (640x480)</option>
+                    <option value="SVGA">SVGA (800x600)</option>
+                    <option value="XGA">XGA (1024x768)</option>
+                    <option value="SXGA">SXGA (1280x1024)</option>
+                    <option value="UXGA">UXGA (1600x1200)</option>
+                </select>
+            </div>
+        </div>
     </div>
 </body>
 
