@@ -6,14 +6,14 @@ My aim for this project is to make a fully self-contained system allowing live v
 
 | **Part** | Image | Usual price |
 | --- | :---: | :---: |
-| **ESP32-CAM Module** | <img width="20%" src="https://ae-pic-a1.aliexpress-media.com/kf/S875c7b2345a04d6782ac048bc152614eP.jpg_960x960q75.jpg_.avif"> | 4.50€ |
-| **OV2640 Camera** | <img width="20%" src="https://m.media-amazon.com/images/I/61dHzX3midL.jpg">  | 2.80€ |
-| **ESP32-CAM-MB Programmer Shield** | <img width="20%" src="ESP32-CAM-MB.jpg"> | 1.60€ |
-| **Battery (5V, 3.7V, …)** |  <img width="20%" src="https://m.media-amazon.com/images/I/41mCtS5yq0L.jpg">| * |
-| **Charging module (TP4056)** | <img width="20%" src="https://m.media-amazon.com/images/I/81kZztRcAFL._AC_SL1500_.jpg"> | ~1€ |
-| **A switch** | <img width="20%" src="https://m.media-amazon.com/images/I/61HYwLtKBRL._AC_SL1500_.jpg"> | * |
-| **DC-DC power supply adapter (if your battery ≠ 5V)** | <img width="20%" src="https://www.az-delivery.de/cdn/shop/products/mt3608-dc-dc-netzteil-adapter-step-up-modul-932676.jpg?v=1679399025&width=1200"> | ~1.5€ |
-| **Low capacity MicroSD card (in FAT32 format)**  | <img width="20%" src="https://wonderphone.fr/wp-content/uploads/2017/08/product7-2.jpg"> | * |
+| **ESP32-CAM Module** | <img width="30%" src="https://ae-pic-a1.aliexpress-media.com/kf/S875c7b2345a04d6782ac048bc152614eP.jpg_960x960q75.jpg_.avif"> | 4.50€ |
+| **OV2640 Camera** | <img width="30%" src="https://m.media-amazon.com/images/I/61dHzX3midL.jpg">  | 2.80€ |
+| **ESP32-CAM-MB Programmer Shield** | <img width="30%" src="ESP32-CAM-MB.jpg"> | 1.60€ |
+| **Battery (5V, 3.7V, …)** |  <img width="30%" src="https://m.media-amazon.com/images/I/41mCtS5yq0L.jpg">| * |
+| **Charging module (TP4056)** | <img width="30%" src="https://m.media-amazon.com/images/I/81kZztRcAFL._AC_SL1500_.jpg"> | ~1€ |
+| **A switch** | <img width="30%" src="https://m.media-amazon.com/images/I/61HYwLtKBRL._AC_SL1500_.jpg"> | * |
+| **DC-DC power supply adapter (if your battery ≠ 5V)** | <img width="30%" src="https://www.az-delivery.de/cdn/shop/products/mt3608-dc-dc-netzteil-adapter-step-up-modul-932676.jpg?v=1679399025&width=1200"> | ~1.5€ |
+| **Low capacity MicroSD card (in FAT32 format)**  | <img width="30%" src="https://wonderphone.fr/wp-content/uploads/2017/08/product7-2.jpg"> | * |
 
 *\* depends on capacity/quality*
 
@@ -32,22 +32,22 @@ Upload the code on your ESP32, using the micro-usb programmer. *If you use the A
 
 Insert a microSD card in the slot on top of the module, then turn it on, you should now see a new WIFI available on your computer, just like this :
 
-<div style="text-align:center">
+<p align="center">
 	<img width="30%" src="AP_screenshoot.png">
-</div>
+</p>
 
 Connect to it. Finally, open the HTML file with your web browser. You can take pictures or change the frame size of the stream in real time (high resolution can slow down the rate).
 
-<div style="text-align:center">
+<p align="center">
 	<img width="40%" src="web-interface.png">
-</div>
+</p>
 
 ## 3D printed case
 
-<div style="text-align:center">
+<p align="center">
 	<img width="40%" src="inside.jpg">
     <img width="40%" src="hood.jpg">
-</div>
+</p>
 
 I provide you with the files allowing you to print a case suitable for a standard size cylindrical battery. There is also the hood to close it.
 
