@@ -19,7 +19,7 @@ My aim for this project is to make a fully self-contained system allowing live v
 
 ## Installation
 
-Download this ZIP archive, change the credentials of the WIFI Access Point defined in the code :
+Download [this ZIP archive](https://github.com/4strium/ESP32-CAM-Mobile/raw/refs/heads/main/ESP32-CAM-WIFI.zip), change the credentials of the WIFI Access Point defined in the code :
 
 ```cpp
 const char *ssid = "ESP32-CAM";
