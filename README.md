@@ -8,7 +8,7 @@ My aim for this project is to make a fully self-contained system allowing live v
 | --- | :---: | :---: |
 | **ESP32-CAM Module** | <img width="30%" src="https://ae-pic-a1.aliexpress-media.com/kf/S875c7b2345a04d6782ac048bc152614eP.jpg_960x960q75.jpg_.avif"> | 4.50€ |
 | **OV2640 Camera** | <img width="30%" src="https://m.media-amazon.com/images/I/61dHzX3midL.jpg">  | 2.80€ |
-| **ESP32-CAM-MB Programmer Shield** | <img width="30%" src="ESP32-CAM-MB.jpg"> | 1.60€ |
+| **ESP32-CAM-MB Programmer Shield** | <img width="30%" src="image/ESP32-CAM-MB.jpg"> | 1.60€ |
 | **Battery (5V, 3.7V, …)** |  <img width="30%" src="https://m.media-amazon.com/images/I/41mCtS5yq0L.jpg">| * |
 | **Charging module (TP4056)** | <img width="30%" src="https://m.media-amazon.com/images/I/81kZztRcAFL._AC_SL1500_.jpg"> | ~1€ |
 | **A switch** | <img width="30%" src="https://m.media-amazon.com/images/I/61HYwLtKBRL._AC_SL1500_.jpg"> | * |
@@ -51,5 +51,5 @@ Connect to it. Finally, open the HTML file with your web browser. You can take p
 
 I provide you with the files allowing you to print a case suitable for a standard size cylindrical battery. There is also the hood to close it.
 
-- Download the case.
-- Download the hood.
+- [Download the case](https://github.com/4strium/ESP32-CAM-Mobile/blob/main/models/ESP32CAM-Boitier.igs).
+- [Download the hood](https://github.com/4strium/ESP32-CAM-Mobile/blob/main/models/Capot-ESP32-CAM.iges).
