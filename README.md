@@ -26,27 +26,27 @@ const char *ssid = "ESP32-CAM";
 const char *password = "12345678";
 ```
 
-Upload the code on your ESP32, using the micro-usb programmer. *If you use the Arduino IDE select “AI Thinker ESP32-CAM” as the targeted board.*
+Upload the code on your ESP32, using the micro-USB programmer. *If you use the Arduino IDE select “AI Thinker ESP32-CAM” as the targeted board.*
 
 ## Usage
 
 Insert a microSD card in the slot on top of the module, then turn it on, you should now see a new WIFI available on your computer, just like this :
 
 <p align="center">
-	<img width="30%" src="AP_screenshoot.png">
+	<img width="30%" src="image/AP_screenshoot.png">
 </p>
 
 Connect to it. Finally, open the HTML file with your web browser. You can take pictures or change the frame size of the stream in real time (high resolution can slow down the rate).
 
 <p align="center">
-	<img width="40%" src="web-interface.png">
+	<img width="40%" src="image/web-interface.png">
 </p>
 
 ## 3D printed case
 
 <p align="center">
-	<img width="40%" src="inside.jpg">
-    <img width="40%" src="hood.jpg">
+	<img width="40%" src="image/inside.jpg">
+    <img width="40%" src="image/hood.jpg">
 </p>
 
 I provide you with the files allowing you to print a case suitable for a standard size cylindrical battery. There is also the hood to close it.
